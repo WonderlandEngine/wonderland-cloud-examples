@@ -1,0 +1,43 @@
+{
+  "name": "@wonderlandengine/network-example-client",
+  "version": "1.0.0",
+  "description": "Example implementation of a meta verse Client/Server game using the Wonderland Cloud solution",
+  "main": "js/index.js",
+  "type": "module",
+  "module": "js/index.js",
+  "author": "Wonderland GmbH",
+  "license": "Wonderland Engine EULA",
+  "scripts": {
+    "build": "cd ../cli && yarn build && cd ../client/ && yarn build",
+    "publish:prod": "wl-cloud page update --config ./publishConfigs/production.json --access public",
+    "publish:dev": "wl-cloud page update --config ./publishConfigs/dev.json --access unlisted",
+    "publish:list": "wl-cloud page list --commanderUrl http://localhost:3000",
+    "test:project:create": "wl-cloud projects create example-name ./deploy --commanderUrl http://localhost:3000 --config ./create-test.json",
+    "test:project:update": "wl-cloud projects update --commanderUrl http://localhost:3000 --config ./create-test.json",
+    "test:project:delete": "wl-cloud projects delete --commanderUrl http://localhost:3000 --config ./create-test.json",
+    "test:project:get": "wl-cloud projects get --commanderUrl http://localhost:3000 --config ./create-test.json"
+  },
+  "keywords": [
+    "wonderland-engine"
+  ],
+  "files": [
+    "dist",
+    "models",
+    "NetworkTest.wlp",
+    "js",
+    "static",
+    "tsconfig.json",
+    "package-lock.json"
+  ],
+  "devDependencies": {
+    "@wonderlandengine/cloud-cli": "https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v1.0.0-dev.1.tgz",
+    "esbuild": "^0.15.18"
+  },
+  "dependencies": {
+    "@wonderlandengine/api": "1.1.3",
+    "@wonderlandengine/components": "1.0.6",
+    "@wonderlandengine/multi-user-server-api": "https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz",
+    "@wonderlandengine/networked-components": "https://cloud.wonderland.dev/wonderland-gmbh-networked-components-v1.0.0-dev.2.tgz",
+    "gl-matrix": "^3.4.3"
+  }
+}

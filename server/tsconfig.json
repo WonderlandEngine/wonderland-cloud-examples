@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "None",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "target": "ES2022",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "baseUrl": "./"
+  },
+  "exclude": ["node_modules", "dist", "**/*.test.ts"],
+  "include": ["./**/*.js", "./**/*.ts"]
+}
+
