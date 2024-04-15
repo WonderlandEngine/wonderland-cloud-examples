@@ -1,0 +1,22 @@
+{
+    "name": "wonderland-events-server",
+    "version": "1.0.0",
+    "description": "Wonderland Events",
+    "main": "index.js",
+    "scripts": {
+        "build": "esbuild index.ts --bundle --format=cjs --outdir=. --platform=node",
+        "xbuild": "tsc",
+        "prepack": "npm run build",
+        "startDebugServer": "wl-cloud servers debug  --serverUrl https://server.wonderland.dev/wonderland-events-dev-develop",
+        "updateProduction": "wl-cloud servers update --serverUrl https://server.wonderland.dev/wonderland-events-develop"
+    },
+    "author": "Wonderland GmbH",
+    "license": "ISC",
+    "dependencies": {
+        "@wonderlandengine/cloud-cli": "https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v0.1.3.tgz",
+        "@wonderlandengine/multi-user-server-api": "https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz",
+        "esbuild": "^0.19.10",
+        "typescript": "^5.2.2",
+        "yargs": "^17.7.2"
+    }
+}
