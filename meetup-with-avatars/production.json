@@ -1,0 +1,26 @@
+{
+    "objects": {
+        "14": {
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17",
+                        "lockY": true,
+                        "speed": 0.05
+                    }
+                },
+                {
+                    "type": "events-client",
+                    "events-client": {
+                        "serverHost": "server.wonderland.dev",
+                        "serverPath": "/wonderland-events/ws",
+                        "audio": true,
+                        "debug": false,
+                        "secure": true
+                    }
+                }
+            ]
+        }
+    }
+}
