@@ -1,5 +1,5 @@
 import {Component, Type} from '@wonderlandengine/api';
-import {NetworkConfigurationComponent} from '@wonderlandengine/networked-components';
+import {NetworkConfigurationComponent} from '@wonderlandcloud/client';
 
 const MediaDevices = [];
 if (!WL_EDITOR) {
