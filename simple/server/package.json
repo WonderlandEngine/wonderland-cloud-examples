@@ -20,7 +20,7 @@
   "license": "Wonderland Engine EULA",
   "devDependencies": {
     "@types/node": "^20.5.7",
-    "@wonderlandengine/cloud-cli": "https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v1.0.0-dev.1.tgz",
+    "@wonderlandcloud/cli": "^0.1.1",
     "esbuild": "^0.19.2",
     "typescript": "^5.2.2"
   },
@@ -32,6 +32,6 @@
     "yarn.lock"
   ],
   "dependencies": {
-    "@wonderlandengine/multi-user-server-api": "https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz"
+    "@wonderlandcloud/multi-user-server-api": "^0.1.1"
   }
 }

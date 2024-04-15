@@ -8,9 +8,9 @@
   "author": "Wonderland GmbH",
   "license": "Wonderland Engine EULA",
   "scripts": {
-    "build": "cd ../cli && yarn build && cd ../client/ && yarn build",
-    "publish:prod": "wl-cloud page update --config ./publishConfigs/production.json --access public",
-    "publish:dev": "wl-cloud page update --config ./publishConfigs/dev.json --access unlisted",
+    "build": "cd ../cli && yarn build && cd  && yarn build",
+    "publish:prod": "wl-cloud page update --config publishConfigs/production.json --access public",
+    "publish:dev": "wl-cloud page update --config publishConfigs/dev.json --access unlisted",
     "publish:list": "wl-cloud page list --commanderUrl http://localhost:3000",
     "test:project:create": "wl-cloud projects create example-name ./deploy --commanderUrl http://localhost:3000 --config ./create-test.json",
     "test:project:update": "wl-cloud projects update --commanderUrl http://localhost:3000 --config ./create-test.json",
@@ -30,14 +30,13 @@
     "package-lock.json"
   ],
   "devDependencies": {
-    "@wonderlandengine/cloud-cli": "https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v1.0.0-dev.1.tgz",
+    "@wonderlandcloud/cli": "^0.1.1",
     "esbuild": "^0.15.18"
   },
   "dependencies": {
+    "@wonderlandcloud/client": "^0.1.1",
     "@wonderlandengine/api": "1.1.3",
     "@wonderlandengine/components": "1.0.6",
-    "@wonderlandengine/multi-user-server-api": "https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz",
-    "@wonderlandengine/networked-components": "https://cloud.wonderland.dev/wonderland-gmbh-networked-components-v1.0.0-dev.2.tgz",
     "gl-matrix": "^3.4.3"
   }
 }

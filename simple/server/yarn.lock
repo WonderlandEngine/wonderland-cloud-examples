@@ -152,9 +152,10 @@
   dependencies:
     "@types/node" "*"
 
-"@wonderlandengine/cloud-cli@https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v1.0.0-dev.1.tgz":
-  version "1.0.0-dev.1"
-  resolved "https://cloud.wonderland.dev/wonderlandengine-cloud-cli-v1.0.0-dev.1.tgz#a2aac68c67aa022cb50618b4d2c6c2d5f47f8729"
+"@wonderlandcloud/cli@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@wonderlandcloud/cli/-/cli-0.1.1.tgz#885df32477ef9fb000642e1664effe3788822484"
+  integrity sha512-80bqjppAzAIKhuGaCUAzwBWSrd+G7k0a2Aom3jHCoCwN0snKZA2zrlfq1gweJRfmSttw7l35yWv7Nrciu281fw==
   dependencies:
     "@types/lodash" "^4.14.202"
     "@types/node" "20.3.0"
@@ -166,9 +167,10 @@
     uuid "^9.0.1"
     ws "8.14.2"
 
-"@wonderlandengine/multi-user-server-api@https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz":
-  version "1.9.0"
-  resolved "https://cloud.wonderland.dev/wonderlandengine-multi-user-server-api-v1.9.0.tgz#08822d151072867470bd7ccd7cd3b2e57a346467"
+"@wonderlandcloud/multi-user-server-api@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@wonderlandcloud/multi-user-server-api/-/multi-user-server-api-0.1.1.tgz#cc3672ade7e38849e35acf26ed641c1dbaeb3fd1"
+  integrity sha512-pShnDnlMeyFrmrdYaUF8X0788aIdycBCBfK4e0yDa44W471XAQx8gf5HaM337y9e+i4N9IzrsinNo7uTd5x9QA==
   dependencies:
     "@types/node" "20.3.0"
     "@types/uuid" "^9.0.7"

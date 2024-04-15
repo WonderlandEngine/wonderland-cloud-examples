@@ -9,8 +9,8 @@ coverage
 globalConfig.json
 .idea
 yarn-error.log
-server/node_modules
-client/node_modules
+simple/server/node_modules
+simple/client/node_modules
 test/node_modules
 tets/bundle.
 *.iml
@@ -26,5 +26,5 @@ example/.js.map
 */**/.kube
 deployment/img/cache
 docs
-client/docs
+simple/client/docs
 */**/wle-apitoken.json

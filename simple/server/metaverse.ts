@@ -4,7 +4,7 @@ import {
   MultiUserServer,
   WebSocketEvent,
   PeerBase
-} from "@wonderlandengine/multi-user-server-api";
+} from "@wonderlandcloud/multi-user-server-api";
 
 export class MetaverseServer extends MultiUserServer {
   connectedUsers = new Map<string, string>();

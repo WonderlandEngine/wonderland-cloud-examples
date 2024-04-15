@@ -23,7 +23,7 @@ import {TeleportComponent} from '@wonderlandengine/components';
 import {VrModeActiveSwitch} from '@wonderlandengine/components';
 import {WasdControlsComponent} from '@wonderlandengine/components';
 import {ButtonComponent} from './button.js';
-import {MetaverseExampleClient} from './example-network-config.js';
+import {MetaverseExampleClient} from './example-network-config.ts';
 import {MicSelection} from './mic-selection.js';
 /* wle:auto-imports:end */
 

@@ -5,7 +5,7 @@ import {
   networkManager,
   NetworkConfigurationComponent,
   WonderlandWebsocketEvent
-} from "@wonderlandengine/networked-components";
+} from "@wonderlandcloud/client";
 
 const CSS = `
         /* Style for the modal container */
