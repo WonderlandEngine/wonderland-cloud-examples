@@ -1,6 +1,6 @@
 import {Component, Property} from '@wonderlandengine/api';
 import {CursorTarget} from '@wonderlandengine/components';
-import {networkManager} from '@wonderlandengine/networked-components';
+import {networkManager} from '@wonderlandcloud/client';
 
 /**
  * radio-toggle

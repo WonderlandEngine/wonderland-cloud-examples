@@ -4,8 +4,8 @@ import {
     networkManager,
     NetworkConfigurationComponent,
     NetworkedComponent,
-} from '@wonderlandengine/networked-components';
-import {WonderlandWebsocketEvent} from '@wonderlandengine/networked-components';
+    WonderlandWebsocketEvent
+} from '@wonderlandcloud/client';
 import {CopyRotation, CopyPosition, CopyHeadNod} from './copy-rotation.js';
 import {setComponentsActive} from './utils/activate-children.js';
 import {vec3} from 'gl-matrix';
