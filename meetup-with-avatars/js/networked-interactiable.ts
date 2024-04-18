@@ -3,7 +3,7 @@ import { property } from "@wonderlandengine/api/decorators.js";
 import {
   WonderlandWebsocketEvent,
   networkManager,
-} from "@wonderlandengine/networked-components";
+} from "@wonderlandcloud/client";
 import { Grabbable } from "./wle-interaction/index.js";
 
 export class NetworkedInteractiable extends Component {

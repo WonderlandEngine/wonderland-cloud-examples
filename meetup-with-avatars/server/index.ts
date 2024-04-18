@@ -4,7 +4,7 @@ import {
   LeaveEvent,
   WebSocketEvent,
   PeerBase,
-} from "@wonderlandengine/multi-user-server-api";
+} from "@wonderlandcloud/multi-user-server-api";
 
 export default class WonderlandEventsServer extends MultiUserServer {
   ballNetworkId = 0;
