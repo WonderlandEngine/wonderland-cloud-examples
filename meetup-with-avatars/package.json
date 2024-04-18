@@ -15,7 +15,7 @@
     "@hyperbeam/web": "^0.0.34",
     "@wonderlandengine/api": "^1.1.5",
     "@wonderlandengine/components": "^1.0.7",
-    "@wonderlandengine/networked-components": "https://cloud.wonderland.dev/wonderlandengine-networked-components-v0.6.1.tgz",
+    "@wonderlandcloud/client": "0.1.1",
     "@wonderlandengine/spatial-audio": "^1.1.0",
     "gl-matrix": "^3.4.3"
   }
