@@ -6,7 +6,7 @@
 </picture>
 
 # wonderland-cloud-examples
-Examples for use of [Wonderland Cloud](cloud.wonderland.dev) services and client/server implementations.
+Examples for use of [Wonderland Cloud](https://cloud.wonderland.dev) services and client/server implementations.
 
 The first example is a `simple` multiplayer demo with basic feature tests.
 
