@@ -9,13 +9,10 @@
   "license": "Wonderland Engine EULA",
   "scripts": {
     "build": "cd ../cli && yarn build && cd  && yarn build",
-    "publish:prod": "wl-cloud page update --config publishConfigs/production.json --access public",
-    "publish:dev": "wl-cloud page update --config publishConfigs/dev.json --access unlisted",
-    "publish:list": "wl-cloud page list --commanderUrl http://localhost:3000",
-    "test:project:create": "wl-cloud projects create example-name ./deploy --commanderUrl http://localhost:3000 --config ./create-test.json",
-    "test:project:update": "wl-cloud projects update --commanderUrl http://localhost:3000 --config ./create-test.json",
-    "test:project:delete": "wl-cloud projects delete --commanderUrl http://localhost:3000 --config ./create-test.json",
-    "test:project:get": "wl-cloud projects get --commanderUrl http://localhost:3000 --config ./create-test.json"
+    "publish:create": "wl-cloud page create my-simple-project --access public",
+    "publish:update": "wl-cloud page update",
+    "publish:delete": "wl-cloud page delete",
+    "publish:list": "wl-cloud page list"
   },
   "keywords": [
     "wonderland-engine"
