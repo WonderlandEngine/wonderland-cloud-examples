@@ -1,19 +1,14 @@
 {
-  "name": "@wonderlandengine/network-example-server",
+  "name": "wonderland-cloud-example-simple",
   "version": "1.0.0",
-  "description": "Example for a multi-user server on Wonderland Cloud.",
+  "description": "Simple example for a multi-user server on Wonderland Cloud.",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
     "build": "esbuild index.ts --bundle --format=cjs --outdir=dist --platform=node",
     "prepack": "yarn build",
     "build:tsc": "tsc",
-    "start:server": "cd ../../server && yarn build && LOG_LEVEL=debug && export CLI=false && yarn start --local=true --packagePath=../example/server/netcode-example-server-v1.0.0.tgz --packageName=netcode-example-server",
-    "start": "yarn pack && yarn start:server",
-    "start:audio:dev": "export AUDIO_DEBUG=1 && export AUDIO_POSITION_DEBUG=1 && yarn start",
-    "start:audio:dev:hrtf": "export AUDIO_MIX_HRTF=1 && yarn start:audio:dev",
-    "start:audio:hrtf": "export AUDIO_MIX_HRTF=1 && yarn start",
-    "start:cli_client": "wl-cloud server debug -l --serverUrl=\"http://localhost:8889\"",
+    "start:dev": "wl-cloud server debug -l --serverUrl=\"http://localhost:8889\"",
     "update:remote": "wl-cloud server update --serverUrl=\"https://server.wonderland.dev/example2-develop\""
   },
   "author": "Wonderland GmbH",
