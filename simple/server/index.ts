@@ -1,5 +1,4 @@
-// export * from "./metaverse";
+import { SimpleServer } from "server";
 
-import { MetaverseServer } from "./metaverse";
+export default SimpleServer;
 
-export default MetaverseServer;
