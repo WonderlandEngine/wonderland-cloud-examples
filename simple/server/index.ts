@@ -1,4 +1,3 @@
-import { SimpleServer } from "server";
+import {SimpleServer} from 'server';
 
 export default SimpleServer;
-
