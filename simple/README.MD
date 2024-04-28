@@ -1,6 +1,6 @@
 ### Simple multiplayer example
 
-This example is a minimal working setup of a multiplayer game using `Wonderland Cloud`
+This example is a minimal working setup of a multiplayer game using [Wonderland Cloud](https://cloud.wonderland.dev)
 
 Features:
 * name selection before client connection
