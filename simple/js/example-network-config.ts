@@ -1,12 +1,13 @@
-import { Component, LightComponent, Object3D, TextComponent } from "@wonderlandengine/api";
-import { property } from "@wonderlandengine/api/decorators.js";
+import {Component, LightComponent, Object3D, TextComponent} from '@wonderlandengine/api';
+import {property} from '@wonderlandengine/api/decorators.js';
 
 import {
-  networkManager,
-  NetworkConfigurationComponent,
-  WonderlandWebsocketEvent
-} from "@wonderlandcloud/client";
+    networkManager,
+    NetworkConfigurationComponent,
+    WonderlandWebsocketEvent,
+} from '@wonderlandcloud/client';
 
+/* CSS for username input */
 const CSS = `
         /* Style for the modal container */
         .modal-container {
@@ -53,6 +54,7 @@ const CSS = `
             cursor: pointer;
         }
 `;
+/* HTML for username input */
 const HTML = `
         <!-- Modal content -->
         <div class="modal-content">
@@ -63,279 +65,264 @@ const HTML = `
 `;
 
 interface ObjectOrComponentReference {
-  [key: string]: {
-    component?: Component
-    object?: Object3D;
-    id?: number;
-  };
+    [key: string]: {
+        component?: Component;
+        object?: Object3D;
+        id?: number;
+    };
 }
 
 /**
  * custom-event-handler
  */
-export class MetaverseExampleClient extends NetworkConfigurationComponent {
-  static TypeName = "example-metaverse-client";
+export class SimpleExampleClient extends NetworkConfigurationComponent {
+    static TypeName = 'simple-example-client';
 
-  @property.bool()
-  skipServerStart = true;
-  @property.object()
-  playerPrototype!: Object3D;
+    @property.bool()
+    skipServerStart = true;
 
-  @property.object()
-  ballObject!: Object3D;
+    @property.object()
+    playerPrototype!: Object3D;
 
-  @property.object()
-  notificationsObject!: Object3D;
+    @property.object()
+    notificationsObject!: Object3D;
 
-  @property.float(3.0)
-  notifyTime!: number;
+    @property.float(3.0)
+    notifyTime!: number;
 
-  static InheritProperties = true;
+    static InheritProperties = true;
 
-  notificationText?: TextComponent | null;
-  notificationTimer = 0;
+    notificationText?: TextComponent | null;
+    notificationTimer = 0;
 
-  username: string = "";
+    username: string = '';
 
-  modal: HTMLDivElement | null = null;
+    modal: HTMLDivElement | null = null;
 
-  userItemOffset = 0;
+    userItemOffset = 0;
 
-  remoteUsersAndComps: Map<string, ObjectOrComponentReference> = new Map<
-    string,
-    ObjectOrComponentReference
-  >();
+    remoteUsersAndComps: Map<string, ObjectOrComponentReference> = new Map<
+        string,
+        ObjectOrComponentReference
+    >();
 
+    init() {
+        const style = document.createElement('style');
+        style.innerText = CSS;
+        document.head.append(style);
 
-  init() {
-    const style = document.createElement("style");
-    style.innerText = CSS;
-    document.head.append(style);
-
-    this.modal = document.createElement("div");
-    this.modal.classList.add("modal-container");
-    this.modal.id = "modal-container";
-    this.modal.innerHTML = HTML;
-    document.body.appendChild(this.modal);
-  }
-
-  override start() {
-    // Then connect
-
-    this.notificationText =
-      this.notificationsObject.getComponent(TextComponent);
-
-    this.username = "";
-
-    if (this.username === "") {
-      this.openUsernameModal();
-    } else {
-      this.connect();
+        this.modal = document.createElement('div');
+        this.modal.classList.add('modal-container');
+        this.modal.id = 'modal-container';
+        this.modal.innerHTML = HTML;
+        document.body.appendChild(this.modal);
     }
-  }
 
-  openUsernameModal() {
-    // @ts-ignore
-    this.modal.style = "display: flex";
-    const btn = document.getElementById("submit-button");
-    const input = document.getElementById("username-input") as HTMLInputElement;
-    if (!this.modal || !btn || !input) return;
+    start() {
+        this.notificationText = this.notificationsObject.getComponent(TextComponent);
 
-    btn.addEventListener("click", () => {
-      this.username = input.value;
-      console.log(this.username);
-      if (this.username === "") return;
-      // @ts-ignore
-      this.modal.style = "display: none";
-      this.connect();
-    });
-  }
-
-  /**
-   * Function which triggers a connection initiation by calling the connect
-   * function of the networkManager singleton instance.
-   */
-  connect() {
-    const customJoinData = {
-      handTracking: false,
-      hands: false,
-      username: this.username
-    };
-    if (this.connecting) {
-      console.error("cannot connect multiple times!");
-      return;
-    } else {
-      this.connecting = true;
+        if (this.username === '') {
+            /* Will connect after username entered */
+            this.openUsernameModal();
+        } else {
+            this.connect();
+        }
     }
-    console.log("super", this);
-    console.log("connecting...", {
-      host: this.serverHost,
-      port: this.serverPort,
-      secure: this.secure,
-      audio: this.audio,
-      audioDeviceId: this.inputDeviceId,
-      debug: this.debug,
-      path: this.serverPath,
-      skipServerStart: this.skipServerStart
-    });
 
-    networkManager
-      .connect(customJoinData, {
-        host: this.serverHost,
-        port: this.serverPort,
-        secure: this.secure,
-        audio: this.audio,
-        audioDeviceId: this.inputDeviceId,
-        debug: this.debug,
-        path: this.serverPath,
-        skipServerStart: this.skipServerStart
-      })
-      .then(this.onSuccessfulConnection.bind(this))
-      .catch((e) => {
-        console.error(e);
-        /* No more updates for now. */
-        this.active = false;
-        this.connecting = false;
-        /* Automatically reconnect -- for debugging the server */
-        setTimeout(this.connect.bind(this), 1000);
-      });
+    openUsernameModal() {
+        this.modal!.style = 'display: flex';
+        const btn = document.getElementById('submit-button');
+        const input = document.getElementById('username-input') as HTMLInputElement;
+        if (!this.modal || !btn || !input) return;
 
-    // for testing muting players from javascript console
-    // @ts-ignore
-    window.setMutePlayer = networkManager.setMutePlayer.bind(networkManager);
-  }
+        btn.addEventListener('click', () => {
+            this.username = input.value;
+            console.log(this.username);
+            if (this.username === '') return;
+            this.modal!.style = 'display: none';
 
-  update(dt: number) {
-    this.notificationTimer -= dt;
-    if (this.notificationTimer < 0 && this.notificationText) {
-      this.notificationText.text = "";
-    }
-  }
-
-  override onSuccessfulConnection(joinEvent: number[]) {
-    try {
-      /* We are mis-using postRender here to ensure all
-       * networked-component updates have been called */
-      this.engine.scene.onPostRender.add(
-        networkManager.update.bind(networkManager)
-      );
-
-      networkManager.onEvent.add(this.onEvent.bind(this));
-      this.playerObject &&
-      this.playerObject.addComponent("networked", {
-        networkId: joinEvent[0],
-        mode: "send"
-      });
-
-      /* Start updating! */
-      this.active = true;
-    } catch (e) {
-      console.log("Error while trying to join:", e);
-    }
-  }
-
-  override onEvent(e: WonderlandWebsocketEvent) {
-    console.log(e);
-    switch (e.type) {
-      case "user-joined":
-        console.log("prototype rotation", this.playerPrototype.getRotationWorld());
-        const userNameObject = this.playerPrototype.findByNameRecursive("Username")[0];
-        const userNameRotation = userNameObject.getRotationWorld();
-        console.log("prototype username rotation", userNameRotation);
-        const root = this.playerPrototype.clone();
-        root.addComponent("networked", {
-          networkId: e.data.networkIds[0],
-          mode: "receive"
+            this.connect();
         });
-        console.log("rotation:", root.getRotationWorld());
-        root.setRotationWorld(this.playerPrototype.getRotationWorld());
-        console.log("rotation new", root.getRotationWorld());
-        const meshComponent = root.getComponent("mesh");
-        if (meshComponent) {
-          meshComponent.active = true;
-        }
-        const usernameObject = root.findByNameRecursive("Username");
-        if (usernameObject[0]) {
-          usernameObject[0].setRotationWorld(userNameRotation);
-        }
-        const textComponent = usernameObject[0]!.getComponent(TextComponent)!;
-        if (textComponent) {
-          textComponent.text = e.data.username;
-          textComponent.active = true;
-        }
+    }
 
-        const lightObject = root.findByNameRecursive("SpeakingLight");
-        const lightComponent = lightObject[0]!.getComponent(LightComponent);
-        if (!lightComponent) {
-          throw Error("No light component defined on SpeakingLight Object cannot process adding new user");
-        }
-        const lightObject2 = root.findByNameRecursive("SpeakingLight2");
-        const lightComponent2 = lightObject2[0]!.getComponent(LightComponent);
-        if (!lightComponent2) {
-          throw Error("No light component defined on SpeakingLight Object cannot process adding new user");
-        }
-        const userObjects = {
-          head: {
-            object: root,
-            id: e.data.networkIds[0] as number
-          },
-          speakingLight: {
-            component: lightComponent
-          },
-          speakingLight2: {
-            component: lightComponent2
-          }
+    /**
+     * Function which triggers a connection initiation by calling the connect
+     * function of the networkManager singleton instance.
+     */
+    connect() {
+        const customJoinData = {
+            handTracking: false,
+            hands: false,
+            username: this.username,
         };
-
-        this.remoteUsersAndComps.set(e.data.id, userObjects);
-        this.notify(e.data.username.toString() + " joined the game.");
-        break;
-
-      case "user-left":
-        const remoteUser = this.remoteUsersAndComps.get(e.data.id);
-        if (remoteUser) {
-          Object.values(remoteUser).forEach((objOrComp) => {
-            if (objOrComp.object && objOrComp.id) {
-              networkManager.removeObject(objOrComp.id);
-              objOrComp.object.destroy();
-            }
-          });
+        if (this.connecting) {
+            console.error('Cannot connect multiple times!');
+            return;
         }
-        this.notify(e.data.username.toString() + " left the game.");
-        break;
-      case "set-ball-network-id":
-        this.ballObject.active = true;
-        console.log(this.ballObject.getTransformWorld());
-        this.ballObject.addComponent("networked", {
-          networkId: e.data.networkId,
-          mode: "receive"
+        this.connecting = true;
+
+        console.log('Connecting...', {
+            host: this.serverHost,
+            port: this.serverPort,
+            secure: this.secure,
+            audio: this.audio,
+            audioDeviceId: this.inputDeviceId,
+            debug: this.debug,
+            path: this.serverPath,
+            skipServerStart: this.skipServerStart,
         });
-        this.notify("Set ball network id " + e.data.networkId);
-        break;
-      case "player-speak-change":
-        const playerId = e.data.playerId;
-        const isSpeaking = e.data.isSpeaking;
-        if (playerId !== networkManager.selfPlayerId) {
-          // only process events but not for others
-          const playerObjects = this.remoteUsersAndComps.get(playerId);
-          if (playerObjects) {
-            if (playerObjects.speakingLight.component && playerObjects.speakingLight2.component) {
-              playerObjects.speakingLight.component.active = isSpeaking;
-              playerObjects.speakingLight2.component.active = isSpeaking;
-            } else {
-              console.error("could not find speaking identifier light");
-            }
-          }
-        }
 
-      default:
-        if (this.debug) console.log("Unknown event:", e);
+        networkManager
+            .connect(customJoinData, {
+                host: this.serverHost,
+                port: this.serverPort,
+                secure: this.secure,
+                audio: this.audio,
+                audioDeviceId: this.inputDeviceId,
+                debug: this.debug,
+                path: this.serverPath,
+                skipServerStart: this.skipServerStart,
+            })
+            .then(this.onSuccessfulConnection.bind(this))
+            .catch((e) => {
+                console.error(e);
+                /* No more updates for now. */
+                this.active = false;
+                this.connecting = false;
+                /* Automatically reconnect -- for debugging the server */
+                setTimeout(this.connect.bind(this), 1000);
+            });
     }
-  }
 
-  notify(text: string) {
-    if (!this.notificationText) return;
-    this.notificationText.text = text;
-    this.notificationTimer = this.notifyTime;
-  }
+    update(dt: number) {
+        this.notificationTimer -= dt;
+        if (this.notificationTimer < 0 && this.notificationText) {
+            this.notificationText.text = '';
+        }
+    }
+
+    override onSuccessfulConnection(joinEvent: number[]) {
+        try {
+            /* We are mis-using postRender here to ensure all
+             * networked-component updates have been called */
+            this.engine.scene.onPostRender.add(networkManager.update.bind(networkManager));
+
+            networkManager.onEvent.add(this.onEvent.bind(this));
+            this.playerObject &&
+                this.playerObject.addComponent('networked', {
+                    networkId: joinEvent[0],
+                    mode: 'send',
+                });
+
+            /* Start updating! */
+            this.active = true;
+        } catch (e) {
+            console.log('Error while trying to join:', e);
+        }
+    }
+
+    override onEvent(e: WonderlandWebsocketEvent) {
+        switch (e.type) {
+            case 'user-joined':
+                console.log('prototype rotation', this.playerPrototype.getRotationWorld());
+                const userNameObject =
+                    this.playerPrototype.findByNameRecursive('Username')[0];
+                const userNameRotation = userNameObject.getRotationWorld();
+                console.log('prototype username rotation', userNameRotation);
+                const root = this.playerPrototype.clone();
+                root.addComponent('networked', {
+                    networkId: e.data.networkIds[0],
+                    mode: 'receive',
+                });
+                console.log('rotation:', root.getRotationWorld());
+                root.setRotationWorld(this.playerPrototype.getRotationWorld());
+                console.log('rotation new', root.getRotationWorld());
+                const meshComponent = root.getComponent('mesh');
+                if (meshComponent) {
+                    meshComponent.active = true;
+                }
+                const usernameObject = root.findByNameRecursive('Username');
+                if (usernameObject[0]) {
+                    usernameObject[0].setRotationWorld(userNameRotation);
+                }
+                const textComponent = usernameObject[0]!.getComponent(TextComponent)!;
+                if (textComponent) {
+                    textComponent.text = e.data.username;
+                    textComponent.active = true;
+                }
+
+                /* Speaking indicator */
+                const lightObject = root.findByNameRecursive('SpeakingLight');
+                const lightComponent = lightObject[0]!.getComponent(LightComponent);
+                if (!lightComponent) {
+                    throw Error(
+                        'No light component defined on SpeakingLight Object cannot process adding new user'
+                    );
+                }
+                const lightObject2 = root.findByNameRecursive('SpeakingLight2');
+                const lightComponent2 = lightObject2[0]!.getComponent(LightComponent);
+                if (!lightComponent2) {
+                    throw Error(
+                        'No light component defined on SpeakingLight Object cannot process adding new user'
+                    );
+                }
+                const userObjects = {
+                    head: {
+                        object: root,
+                        id: e.data.networkIds[0] as number,
+                    },
+                    speakingLight: {
+                        component: lightComponent,
+                    },
+                    speakingLight2: {
+                        component: lightComponent2,
+                    },
+                };
+
+                this.remoteUsersAndComps.set(e.data.id, userObjects);
+                this.notify(e.data.username.toString() + ' joined the game.');
+                break;
+
+            case 'user-left':
+                const remoteUser = this.remoteUsersAndComps.get(e.data.id);
+                if (remoteUser) {
+                    Object.values(remoteUser).forEach((objOrComp) => {
+                        if (objOrComp.object && objOrComp.id) {
+                            networkManager.removeObject(objOrComp.id);
+                            objOrComp.object.destroy();
+                        }
+                    });
+                }
+                this.notify(e.data.username.toString() + ' left the game.');
+                break;
+            case 'player-speak-change':
+                const playerId = e.data.playerId;
+                const isSpeaking = e.data.isSpeaking;
+                if (playerId !== networkManager.selfPlayerId) {
+                    // only process events but not for others
+                    const playerObjects = this.remoteUsersAndComps.get(playerId);
+                    if (playerObjects) {
+                        if (
+                            playerObjects.speakingLight.component &&
+                            playerObjects.speakingLight2.component
+                        ) {
+                            playerObjects.speakingLight.component.active = isSpeaking;
+                            playerObjects.speakingLight2.component.active = isSpeaking;
+                        } else {
+                            console.error('could not find speaking identifier light');
+                        }
+                    }
+                }
+
+            default:
+                if (this.debug) console.log('Unknown event:', e);
+        }
+    }
+
+    /** Show the user an on-screen notification */
+    notify(text: string) {
+        if (!this.notificationText) return;
+        this.notificationText.text = text;
+        this.notificationTimer = this.notifyTime;
+    }
 }
