@@ -29,8 +29,8 @@
                     "type": "mic-selection"
                 },
                 {
-                    "type": "example-metaverse-client",
-                    "example-metaverse-client": {
+                    "type": "simple-example-client",
+                    "simple-example-client": {
                         "skipServerStart": false,
                         "playerObject": "17",
                         "playerMesh": "11",
@@ -41,7 +41,6 @@
                         "audio": true,
                         "debug": false,
                         "playerPrototype": "256",
-                        "ballObject": null,
                         "notificationsObject": "255",
                         "serverHost": "server.wonderland.dev"
                     }

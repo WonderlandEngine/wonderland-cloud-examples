@@ -1,18 +1,14 @@
-import {Component, Type} from '@wonderlandengine/api';
+import {Component} from '@wonderlandengine/api';
 import {NetworkConfigurationComponent} from '@wonderlandcloud/client';
 
 const MediaDevices = [];
-if (!WL_EDITOR) {
-}
 
 /**
- * mic-selection
+ * Show a selection of different audio input
  */
 export class MicSelection extends Component {
     static TypeName = 'mic-selection';
-    static Properties = {
-        param: {type: Type.Float, default: 1.0},
-    };
+    static Properties = {};
 
     start() {
         navigator.mediaDevices
@@ -26,7 +22,7 @@ export class MicSelection extends Component {
                 this.addSelection();
             })
             .catch((err) => {
-                console.error(`${err.name}: ${err.message}`);
+                console.error(`${err.name}: ${err.message}`, err);
             });
     }
     addSelection() {

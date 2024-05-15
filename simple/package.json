@@ -14,6 +14,7 @@
     "publish:delete": "wl-cloud page delete",
     "publish:list": "wl-cloud page list"
   },
+  "prettier": "@wonderlandengine/prettier-config"
   "keywords": [
     "wonderland-engine"
   ],
@@ -34,6 +35,7 @@
     "@wonderlandcloud/client": "^0.1.1",
     "@wonderlandengine/api": "1.1.3",
     "@wonderlandengine/components": "1.0.6",
+    "@wonderlandengine/prettier-config": "^1.0.0",
     "gl-matrix": "^3.4.3"
   }
 }
