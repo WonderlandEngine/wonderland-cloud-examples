@@ -14,7 +14,7 @@
     "publish:delete": "wl-cloud page delete",
     "publish:list": "wl-cloud page list"
   },
-  "prettier": "@wonderlandengine/prettier-config"
+  "prettier": "@wonderlandengine/prettier-config",
   "keywords": [
     "wonderland-engine"
   ],
