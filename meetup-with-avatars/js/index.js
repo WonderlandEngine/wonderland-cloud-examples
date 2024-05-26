@@ -13,10 +13,10 @@
 
 /* wle:auto-imports:start */
 import {Cursor} from '@wonderlandengine/components';
-import {CursorTarget} from '@wonderlandengine/components';
 import {FingerCursor} from '@wonderlandengine/components';
 import {HandTracking} from '@wonderlandengine/components';
 import {HowlerAudioListener} from '@wonderlandengine/components';
+import {InputProfile as InputProfile1} from './input-profile.js';
 import {MouseLookComponent} from '@wonderlandengine/components';
 import {PlayerHeight} from '@wonderlandengine/components';
 import {TeleportComponent} from '@wonderlandengine/components';
@@ -24,18 +24,13 @@ import {VrModeActiveSwitch} from '@wonderlandengine/components';
 import {WasdControlsComponent} from '@wonderlandengine/components';
 import {AudioListener} from '@wonderlandengine/spatial-audio';
 import {AudioSource} from '@wonderlandengine/spatial-audio';
-import {Animate} from './animate.js';
 import {CopyRotation} from './copy-rotation.js';
 import {EventsClient} from './events-client.js';
 import {Fullscreen} from './fullscreen.js';
-import {Hyperbeam} from './hyperbeam.js';
-import {InputProfile} from './input-profile.js';
 import {LookAtPlayer} from './look-at.js';
 import {MobileActiveSwitch} from './mobile-active-switch.js';
-import {RadioToggle} from './radio-toggle.js';
 import {SnapRotate} from './snap-rotaion.js';
 import {SpeakerIndicator} from './speaker-indicator.js';
-import {Toggle} from './toggle.js';
 import {TouchLook} from './touch-look.js';
 import {TouchMove} from './touch-move.js';
 import {TouchUI} from './touch-ui.js';
@@ -47,7 +42,7 @@ import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibil
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'Events',
+    ProjectName: 'MeetupWithAvatars',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','local-floor','hand-tracking','hit-test',],
@@ -104,10 +99,10 @@ if (document.readyState === 'loading') {
 
 /* wle:auto-register:start */
 engine.registerComponent(Cursor);
-engine.registerComponent(CursorTarget);
 engine.registerComponent(FingerCursor);
 engine.registerComponent(HandTracking);
 engine.registerComponent(HowlerAudioListener);
+engine.registerComponent(InputProfile1);
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(PlayerHeight);
 engine.registerComponent(TeleportComponent);
@@ -115,18 +110,13 @@ engine.registerComponent(VrModeActiveSwitch);
 engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(AudioListener);
 engine.registerComponent(AudioSource);
-engine.registerComponent(Animate);
 engine.registerComponent(CopyRotation);
 engine.registerComponent(EventsClient);
 engine.registerComponent(Fullscreen);
-engine.registerComponent(Hyperbeam);
-engine.registerComponent(InputProfile);
 engine.registerComponent(LookAtPlayer);
 engine.registerComponent(MobileActiveSwitch);
-engine.registerComponent(RadioToggle);
 engine.registerComponent(SnapRotate);
 engine.registerComponent(SpeakerIndicator);
-engine.registerComponent(Toggle);
 engine.registerComponent(TouchLook);
 engine.registerComponent(TouchMove);
 engine.registerComponent(TouchUI);

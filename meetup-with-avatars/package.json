@@ -8,14 +8,18 @@
   "scripts": {
     "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
   },
+  "prettier": "@wonderlandengine/prettier-config",
   "keywords": [
     "wonderland-engine"
   ],
+  "devDependencies": {
+    "open": "^10.1.0"
+  },
   "dependencies": {
     "@hyperbeam/web": "^0.0.34",
-    "@wonderlandengine/api": "^1.1.5",
-    "@wonderlandengine/components": "^1.0.7",
     "@wonderlandcloud/client": "0.1.1",
+    "@wonderlandengine/api": "^1.2.2",
+    "@wonderlandengine/components": "^1.1.4",
     "@wonderlandengine/spatial-audio": "^1.1.0",
     "gl-matrix": "^3.4.3"
   }
