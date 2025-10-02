@@ -33,9 +33,9 @@ Instructions on how to run this example.
 Follow the following instructions to run the example:
 
 1. Run `yarn` in the `server` directory.
-2. Change the `--serverUrl` value of the `start:dev` script in `server/package.json` to match the "CLI URL" of your new server.
+2. Change the `<your-server-name>` value of the `start:dev` script in `server/package.json` to match the "server name" of your new server.
 3. Run `yarn start:dev` in the `server` directory.
 4. Open the `Simple.wlp` project.
 5. Find the `simple-example-client` component on the Player object.
-6. Update the `serverPath` value to match the "ServerPath" of your new server.
+6. Update the `serverPath` value to match the "ServerPath" of your new server. You can get this value from the server's page on Wonderland Cloud.
 7. Press the green arrow icon at the top. You can open multiple tabs to test the multi-user.
