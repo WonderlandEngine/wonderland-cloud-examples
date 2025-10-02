@@ -39,3 +39,8 @@ Follow the following instructions to run the example:
 5. Find the `simple-example-client` component on the Player object.
 6. Update the `serverPath` value to match the "ServerPath" of your new server. You can get this value from the server's page on Wonderland Cloud.
 7. Press the green arrow icon at the top. You can open multiple tabs to test the multi-user.
+
+### More Information
+
+Check out the Development Guide for more information: https://wonderlandengine.com/cloud/documentation/development-flow/
+Also check out the [Wonderland Cloud CLI GitHub Repository](https://github.com/WonderlandEngine/wonderland-cloud/tree/main/cli)
