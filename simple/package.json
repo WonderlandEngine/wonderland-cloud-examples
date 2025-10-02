@@ -28,7 +28,7 @@
     "package-lock.json"
   ],
   "devDependencies": {
-    "@wonderlandcloud/cli": "^0.1.2",
+    "@wonderlandcloud/cli": "^0.2.23",
     "esbuild": "^0.15.18"
   },
   "dependencies": {
