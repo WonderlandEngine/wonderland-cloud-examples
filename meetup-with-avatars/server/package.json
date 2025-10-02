@@ -7,14 +7,14 @@
         "build": "esbuild index.ts --bundle --format=cjs --outdir=. --platform=node",
         "xbuild": "tsc",
         "prepack": "npm run build",
-        "startDebugServer": "wl-cloud servers debug  --serverUrl https://server.wonderland.dev/wonderland-events-dev-develop",
-        "updateProduction": "wl-cloud servers update --serverUrl https://server.wonderland.dev/wonderland-events-develop"
+        "start:dev": "wl-cloud server debug <server-name>",
+        "update:prod": "wl-cloud server update <your-prod-server-name>"
     },
     "author": "Wonderland GmbH",
     "license": "ISC",
     "dependencies": {
-        "@wonderlandcloud/cli": "0.1.2",
-        "@wonderlandcloud/multi-user-server-api": "0.1.1",
+        "@wonderlandcloud/cli": "^0.2.23",
+        "@wonderlandcloud/multi-user-server-api": "^0.1.33",
         "esbuild": "^0.19.10",
         "typescript": "^5.2.2",
         "yargs": "^17.7.2"

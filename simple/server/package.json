@@ -8,14 +8,14 @@
     "build": "esbuild index.ts --bundle --format=cjs --outdir=dist --platform=node",
     "prepack": "yarn build",
     "build:tsc": "tsc",
-    "start:dev": "wl-cloud server debug -l --serverUrl=\"http://localhost:8889\"",
-    "update:remote": "wl-cloud server update --serverUrl=\"https://server.wonderland.dev/example2-develop\""
+    "start:dev": "wl-cloud server debug <your-server-name>",
+    "update:remote": "wl-cloud server update <your-server-name>"
   },
   "author": "Wonderland GmbH",
   "license": "Wonderland Engine EULA",
   "devDependencies": {
     "@types/node": "^20.5.7",
-    "@wonderlandcloud/cli": "^0.1.1",
+    "@wonderlandcloud/cli": "^0.2.22",
     "esbuild": "^0.19.2",
     "typescript": "^5.2.2"
   },
@@ -27,6 +27,6 @@
     "yarn.lock"
   ],
   "dependencies": {
-    "@wonderlandcloud/multi-user-server-api": "^0.1.1"
+    "@wonderlandcloud/multi-user-server-api": "^0.1.33"
   }
 }
